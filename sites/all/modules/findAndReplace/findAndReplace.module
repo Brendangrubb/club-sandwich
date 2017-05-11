@@ -34,15 +34,23 @@
     return $form;
   }
 
+  function findAndReplace($word, $phrase) {
+    $lower_word = strtolower($word);
+    $lower_phrase = strtolower($phrase);
+    $new_string = str_replace($lower_word, 'sandwich', $lower_phrase);
+    return $new_string;
+  }
+
   function findAndReplace_form_submit($form, &$form_state) {
-    $word = $form_state['values']['word'];
-    $phrase = $form_state['values']['phrase'];
-    $new_string = str_replace($word, 'sandwich', $phrase);
-    $_SESSION['new_string'] = $new_string;
+    $_SESSION['word'] = $form_state['values']['word'];
+    $_SESSION['phrase'] = $form_state['values']['phrase'];
     $form_state['redirect'] = 'find_and_replace_success';
   }
 
   function findAndReplaceResults() {
-    $new_string = $_SESSION['new_string'];
-    return '<p>Here is your hilarious phrase:<br><strong>' . $new_string . '</strong></p>';
+    $phrase = $_SESSION['phrase'];
+    $word = $_SESSION['word'];
+    $new_string = findAndReplace($word, $phrase);
+    return 'Here\'s your hilarious new phrase:<br>' . $new_string .
+      '</p>';
   }
