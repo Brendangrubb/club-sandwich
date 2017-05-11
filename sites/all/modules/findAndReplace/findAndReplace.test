@@ -1,0 +1,28 @@
+<?php
+
+class FindAndReplaceTestCase extends DrupalUnitTestCase {
+
+  public static function getInfo() {
+
+    return array(
+      'name' => 'Find and Replace unit test',
+      'description' => 'Test that findAndReplace works.',
+      'group' => 'Club Sandwich Tests',
+    );
+
+  }
+
+  function testFindAndReplace() {
+
+    $description = 'A word given by user will be replaced in the phrase given by the user';
+
+    $word = 'the';
+    $phrase = 'the man likes the dog';
+
+    $expected = 'sandwich man likes sandwich dog';
+
+    $result = findAndReplace($word, $phrase);
+
+    $this->assertEqual($result, $expected, $description);
+  }
+}
