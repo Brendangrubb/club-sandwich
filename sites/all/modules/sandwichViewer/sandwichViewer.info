@@ -1,0 +1,5 @@
+name = Ajax Sandwich Viewer
+description = Display Sandwich Pics with Ajax.
+package = Sandwich Modules
+core = 7.x
+files[] = sandwich-viewer.module
