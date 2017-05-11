@@ -1,0 +1,1 @@
+[11-May-2017 13:58:53 America/Los_Angeles] PHP Fatal error:  Call to undefined method GreetingTests::assertTest() in /Users/Guest/Desktop/club-sandwich/sites/all/modules/greeting/greeting.test on line 20
