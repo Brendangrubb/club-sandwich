@@ -24,7 +24,7 @@
     );
     $form['phrase'] = array(
       '#title' => 'Enter a Phrase with that word in it',
-      '#type' => 'textfield',
+      '#type' => 'textarea',
       '#required' => TRUE,
     );
     $form['submit'] = array(
@@ -35,10 +35,15 @@
   }
 
   function findAndReplace_form_submit($form, &$form_state) {
-    $phrase = $form_state['values']['word'];
+    $word = $form_state['values']['word'];
     $phrase = $form_state['values']['phrase'];
+
+    $new_string = str_replace($word, 'sandwich', $phrase);
+
     $_SESSION['phrase'] = $phrase;
     $_SESSION['word'] = $word;
+    $_SESSION['new_string'] = $new_string;
+
     $form_state['redirect'] = 'find_and_replace_success';
 
   }
@@ -46,6 +51,13 @@
   function find_and_replace_results() {
     $phrase = $_SESSION['phrase'];
     $word = $_SESSION['word'];
+    $new_string = $_SESSION['new_string'];
 
-    return '<p>' . $phrase . '</p>';
+    return
+      '<p>Original Phrase: ' . $phrase .
+      '<br>' .
+      'Original Word: ' . $word .
+      '<br>' .
+      'New Phrase: ' . $new_string .
+      '</p>';
   }
