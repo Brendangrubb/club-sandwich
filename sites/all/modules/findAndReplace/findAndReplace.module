@@ -1,0 +1,51 @@
+<?php
+  function findAndReplace_menu() {
+      $items['find_and_replace'] = array(
+        'title' => 'Sandwich Find and Replace',
+        'page callback' => 'drupal_get_form',
+        'page arguments' => array('findAndReplace_form'),
+        'access callback' => TRUE,
+        'type' => MENU_NORMAL_ITEM,
+      );
+      $items['find_and_replace_success'] = array(
+        'title' => 'Here\'s Your New Phrase!',
+        'page callback' => 'find_and_replace_results',
+        'access callback' => TRUE,
+        'type' => MENU_CALLBACK,
+      );
+      return $items;
+  }
+
+  function findAndReplace_form() {
+    $form['word'] = array(
+      '#title' => 'Enter a word you want replaced',
+      '#type' => 'textfield',
+      '#required' => TRUE,
+    );
+    $form['phrase'] = array(
+      '#title' => 'Enter a Phrase with that word in it',
+      '#type' => 'textfield',
+      '#required' => TRUE,
+    );
+    $form['submit'] = array(
+      '#type' => 'submit',
+      '#value' => 'Check You Out!!',
+    );
+    return $form;
+  }
+
+  function findAndReplace_form_submit($form, &$form_state) {
+    $phrase = $form_state['values']['word'];
+    $phrase = $form_state['values']['phrase'];
+    $_SESSION['phrase'] = $phrase;
+    $_SESSION['word'] = $word;
+    $form_state['redirect'] = 'find_and_replace_success';
+
+  }
+
+  function find_and_replace_results() {
+    $phrase = $_SESSION['phrase'];
+    $word = $_SESSION['word'];
+
+    return '<p>' . $phrase . '</p>';
+  }

@@ -1,0 +1,7 @@
+name = Find and Replace
+description = Find instances of a a word in a phrase and replace in with the word sandwich
+package = Sandwich Modules
+core = 7.x
+files[] = findAndReplace.module
+files[] = findAndReplace.test
+dependencies[] = simpletest
