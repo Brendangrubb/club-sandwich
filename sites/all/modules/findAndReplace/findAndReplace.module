@@ -35,30 +35,14 @@
   }
 
   function findAndReplace_form_submit($form, &$form_state) {
-    $_SESSION['word'] = $form_state['values']['word'];
-    $_SESSION['phrase'] = $form_state['values']['phrase'];
-
+    $word = $form_state['values']['word'];
+    $phrase = $form_state['values']['phrase'];
+    $new_string = str_replace($word, 'sandwich', $phrase);
+    $_SESSION['new_string'] = $new_string;
     $form_state['redirect'] = 'find_and_replace_success';
-
   }
 
   function findAndReplaceResults() {
-    $phrase = $_SESSION['phrase'];
-    $word = $_SESSION['word'];
-    // $new_string = str_replace($word, 'sandwich', $phrase);
-    $new_string = findAndReplace($word, $phrase);
-
-    return
-      '<p>Original Phrase: ' . $phrase .
-      '<br>' .
-      'Original Word: ' . $word .
-      '<br>' .
-      'New Phrase: ' . $new_string .
-      '</p>';
-  }
-
-  function findAndReplace($word, $phrase) {
-    $new_string = str_replace($word, 'sandwich', $phrase);
-
-    return $new_string;
+    $new_string = $_SESSION['new_string'];
+    return '<p>Here is your hilarious phrase:<br><strong>' . $new_string . '</strong></p>';
   }
