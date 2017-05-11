@@ -1,0 +1,7 @@
+name = That Greeter
+description = Handles custom user login tasks for Sandwich Shop.
+package = Sandwich Modules
+core = 7.x
+files[] = greeting.module
+files[] = greeting.test
+dependencies[] = simpletest
