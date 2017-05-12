@@ -30,6 +30,7 @@
     * Check all _Global privileges_ and click _Go_
 * Type **_localhost:8888_** into your web browser
 * The application will load and be ready to use!
+    * To login as an admin, use _club-sandwich_ as username and _club-sandwich_ as password
 
 &nbsp;
 ## Specifications
